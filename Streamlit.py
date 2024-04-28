@@ -5,7 +5,7 @@ import streamlit as st
 diabetes_model = pickle.load(open('random_forest_model.sav', 'rb'))
 
 #judul web
-st.title('Data Mining Prediksi Diabetes')
+st.title('Prediksi Penyakit Diabetes')
 
 #membagi kolom
 col1, col2 = st.columns(2)
