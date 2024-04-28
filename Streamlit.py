@@ -2,7 +2,11 @@ import pickle
 import streamlit as st
 
 # membaca model
-diabetes_model = pickle.load(open('random_forest_model.sav', 'rb'))
+try:
+    diabetes_model = pickle.load(open('random_forest_model.sav', 'rb'))
+    print("Model berhasil dimuat.")
+except Exception as e:
+    print("Gagal memuat model:", e)
 
 #judul web
 st.title('Prediksi Penyakit Diabetes')
