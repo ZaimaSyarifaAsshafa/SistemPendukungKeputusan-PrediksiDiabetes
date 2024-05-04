@@ -1,48 +1,59 @@
 import pickle
 import streamlit as st
 
-# membaca model
+# Membaca model
 try:
     diabetes_model = pickle.load(open('random_forest_model.sav', 'rb'))
     print("Model berhasil dimuat.")
 except Exception as e:
     print("Gagal memuat model:", e)
 
-#judul web
+# Judul web
 st.title('Prediksi Penyakit Diabetes')
 
-#membagi kolom
+# Membagi kolom
 col1, col2 = st.columns(2)
 
-with col1 :
-    Pregnancies = st.text_input ('input nilai Pregnancies')
+with col1:
+    Pregnancies = st.text_input('Input nilai Pregnancies')
 
-with col2 :
-    Glucose = st.text_input ('input nilai Glucose')
+with col2:
+    Glucose = st.text_input('Input nilai Glucose')
 
-with col1 :
-    BloodPressure = st.text_input ('input nilai Blood Pressure')
+with col1:
+    BloodPressure = st.text_input('Input nilai Blood Pressure')
 
-with col2 :
-    SkinThickness = st.text_input ('input nilai Skin Thickness')
+with col2:
+    SkinThickness = st.text_input('Input nilai Skin Thickness')
 
-with col1 :
-    Insulin = st.text_input ('input nilai Insulin')
+with col1:
+    Insulin = st.text_input('Input nilai Insulin')
 
-with col2 :
-    BMI = st.text_input ('input nilai BMI')
+with col2:
+    BMI = st.text_input('Input nilai BMI')
 
-with col1 :
-    DiabetesPedigreeFunction = st.text_input ('input nilai Diabetes Pedigree Function')
+with col1:
+    DiabetesPedigreeFunction = st.text_input('Input nilai Diabetes Pedigree Function')
 
-with col2 :
-    Age = st.text_input ('input nilai Age')
+with col2:
+    Age = st.text_input('Input nilai Age')
 
-# code untuk prediksi
+# Code untuk prediksi
 diab_diagnosis = ''
 
-# membuat tombol untuk prediksi
+# Membuat tombol untuk prediksi
 if st.button('Test Prediksi Diabetes'):
+    # Konversi nilai input menjadi tipe data numerik
+    Pregnancies = float(Pregnancies)
+    Glucose = float(Glucose)
+    BloodPressure = float(BloodPressure)
+    SkinThickness = float(SkinThickness)
+    Insulin = float(Insulin)
+    BMI = float(BMI)
+    DiabetesPedigreeFunction = float(DiabetesPedigreeFunction)
+    Age = float(Age)
+
+    # Prediksi menggunakan model
     diab_prediction = diabetes_model.predict([[Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]])
 
     # Menampilkan hasil prediksi
