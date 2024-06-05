@@ -26,7 +26,7 @@ with col2:
 with col1:
     DiabetesPedigreeFunction = st.text_input('Input nilai Diabetes Pedigree Function')
 
-with col2:
+with col1:
     Age = st.text_input('Input nilai Age')
 
 with col2:
