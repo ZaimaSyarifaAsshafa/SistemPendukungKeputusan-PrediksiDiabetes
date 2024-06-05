@@ -3,7 +3,7 @@ import streamlit as st
 
 # Membaca model
 try:
-    diabetes_model = pickle.load(open('svm_model.sav', 'rb'))
+    diabetes_model = pickle.load(open('svm.sav', 'rb'))
     print("Model berhasil dimuat.")
 except Exception as e:
     print("Gagal memuat model:", e)
