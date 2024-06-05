@@ -3,7 +3,7 @@ import streamlit as st
 
 # Membaca model
 try:
-    diabetes_model = pickle.load(open('svm1.sav', 'rb'))
+    diabetes_model = pickle.load(open('svm.sav', 'rb'))
     print("Model berhasil dimuat.")
 except Exception as e:
     print("Gagal memuat model:", e)
@@ -29,9 +29,6 @@ with col1:
 with col1:
     Age = st.text_input('Input nilai Age')
 
-with col2:
-    Outcome = st.text_input('Input nilai Outcome')
-
 # Code untuk prediksi
 diab_diagnosis = ''
 
@@ -43,10 +40,9 @@ if st.button('Test Prediksi Diabetes'):
     BMI = float(BMI)
     DiabetesPedigreeFunction = float(DiabetesPedigreeFunction)
     Age = float(Age)
-    Outcome = int(Outcome)
 
     # Prediksi menggunakan model
-    diab_prediction = diabetes_model.predict([[Glucose, BloodPressure, BMI, DiabetesPedigreeFunction, Age, Outcome]])
+    diab_prediction = diabetes_model.predict([[Glucose, BloodPressure, BMI, DiabetesPedigreeFunction, Age]])
 
     # Menampilkan hasil prediksi
     if diab_prediction[0] == 1:
